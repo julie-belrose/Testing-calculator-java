@@ -31,6 +31,14 @@ public class CalculatorTest {
     }
 
     @Test
+    @DisplayName("should_return_a_multiplication")
+    void should_return_a_multiplication() {
+        Calculator calculator = new Calculator();
+        int result = calculator.mul(valueStartA, valueStartB);
+        assertEquals(3, result);
+    }
+
+    @Test
     @DisplayName("should_return_a_division")
     void should_return_a_division_without_throws_exception() {
         Calculator calculator = new Calculator();
@@ -47,6 +55,4 @@ public class CalculatorTest {
         }).isInstanceOf(ArithmeticException.class);
 
     }
-
-
 }

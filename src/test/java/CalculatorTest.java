@@ -2,6 +2,7 @@ import org.example.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
@@ -27,5 +28,15 @@ public class CalculatorTest {
         int result = calculator.sub(valueStartA, valueStartB);
 
         assertEquals(-2, result);
+    }
+
+    @Test
+    @DisplayName("should_return_a_division")
+    void should_return_a_division() {
+        Calculator calculator = new Calculator();
+        assertThatThrownBy(() -> {
+            int result = valueStartA * valueStartB;
+        }).isInstanceOf(ArithmeticException.class);
+
     }
 }

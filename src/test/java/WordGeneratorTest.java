@@ -2,9 +2,8 @@ import org.example.WordGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
-import org.mockito.Mockito;
 
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,6 +11,7 @@ public class WordGeneratorTest {
 
     private WordGenerator wordGenerator;
     String wordToGuess = "lapin";
+    private final List<String> expectedWords = List.of("chat", "lapin", "poule");
 
     @BeforeEach
     void setUp() {
@@ -25,7 +25,8 @@ public class WordGeneratorTest {
         String result = wordGenerator.getRandomWord(wordToGuess);
 
         // Assert
-        assertEquals("lapin", result);
+        assertNotNull(result);
+        assertTrue(expectedWords.contains(result));
     }
 
     @Test

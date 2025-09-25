@@ -32,11 +32,21 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("should_return_a_division")
+    void should_return_a_division_without_throws_exception() {
+        Calculator calculator = new Calculator();
+        int result = calculator.div(valueStartA, valueStartB);
+        assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("should_return_a_division_with_throws_exception")
     void should_return_a_division() {
         Calculator calculator = new Calculator();
         assertThatThrownBy(() -> {
-            int result = valueStartA * valueStartB;
+            calculator.div(valueStartA, 0);
         }).isInstanceOf(ArithmeticException.class);
 
     }
+
+
 }

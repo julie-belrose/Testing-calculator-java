@@ -8,13 +8,13 @@ public class WordGenerator {
     private final Random random;
 
     public WordGenerator() {
-        // ...
-        return ;
+        this.words = List.of("chat", "lapin", "poule");
+        this.random = new Random();
     }
 
-    public String getRandomWord() {
+    public String getRandomWord(String wordToGuess) {
         // ...
-        return "word";
+        return "";
     }
 
     public String getWord(int index) {

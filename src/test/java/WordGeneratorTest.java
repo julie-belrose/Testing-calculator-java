@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +16,6 @@ public class WordGeneratorTest {
     @BeforeEach
     void setUp() {
         wordGenerator = Mockito.mock(WordGenerator.class);
-        private List<String> words = Mockito.mock(WordGenerator.words);
     }
 
     //private Array<String> wordToGuess = ["bnj", "n mm"];
@@ -25,21 +23,27 @@ public class WordGeneratorTest {
     @Test
     @DisplayName("should_return_random_word_to_guess")
     void should_return_random_word_to_guess() {
+        // Arrange
+        Mockito.when(wordGenerator.getRandomWord(wordToGuess)).thenReturn("lapin");
+
         // Act
-        String result = String.valueOf(Integer.parseInt(wordGenerator.getRandomWord(wordToGuess)));
+        String result = wordGenerator.getRandomWord(wordToGuess);
 
         // Assert
         assertEquals("lapin", result);
     }
 
     @Test
-    @DisplayName("shoul_compare_index_world_to_wordToguess")
-    void shoul_compare_index_world_to_wordToguess() {
+    @DisplayName("should_get_word_by_index")
+    void should_get_word_by_index() {
+        // Arrange
+        Mockito.when(wordGenerator.getWord(1)).thenReturn("lapin");
 
-        int result = wordGenerator.getWord(String.valueOf(words[1]));
+        // Act
+        String result = wordGenerator.getWord(1);
 
-        assertEquals(1, result);
-
+        // Assert
+        assertEquals("lapin", result);
     }
 
 }

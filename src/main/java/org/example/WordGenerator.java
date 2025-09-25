@@ -14,11 +14,11 @@ public class WordGenerator {
 
     public String getRandomWord(String wordToGuess) {
         // ...
-        return "";
+        return null;
     }
 
     public String getWord(int index) {
         // ...
-        return "1";
+        return "0";
     }
 }

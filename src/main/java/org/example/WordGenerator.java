@@ -13,12 +13,17 @@ public class WordGenerator {
     }
 
     public String getRandomWord(String wordToGuess) {
-        // ...
+//        int randomIndex = random.nextInt(words.size());
+//        return words.get(randomIndex);
         return null;
     }
 
     public String getWord(int index) {
-        // ...
+//        if (index < 0 || index >= words.size()) {
+//            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+//        }
+//        return words.get(index);
+
         return "0";
     }
 }

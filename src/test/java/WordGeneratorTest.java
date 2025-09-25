@@ -15,17 +15,12 @@ public class WordGeneratorTest {
 
     @BeforeEach
     void setUp() {
-        wordGenerator = Mockito.mock(WordGenerator.class);
+        wordGenerator = new WordGenerator();
     }
-
-    //private Array<String> wordToGuess = ["bnj", "n mm"];
 
     @Test
     @DisplayName("should_return_random_word_to_guess")
     void should_return_random_word_to_guess() {
-        // Arrange
-        Mockito.when(wordGenerator.getRandomWord(wordToGuess)).thenReturn("lapin");
-
         // Act
         String result = wordGenerator.getRandomWord(wordToGuess);
 
@@ -36,9 +31,6 @@ public class WordGeneratorTest {
     @Test
     @DisplayName("should_get_word_by_index")
     void should_get_word_by_index() {
-        // Arrange
-        Mockito.when(wordGenerator.getWord(1)).thenReturn("lapin");
-
         // Act
         String result = wordGenerator.getWord(1);
 

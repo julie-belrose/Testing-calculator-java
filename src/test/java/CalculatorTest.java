@@ -19,5 +19,13 @@ public class CalculatorTest {
         assertEquals(4, result);
     }
 
+    @Test
+    @DisplayName("should_return_a_subtraction")
+    void should_return_a_subtraction() {
+        Calculator calculator = new Calculator();
 
+        int result = calculator.sub(valueStartA, valueStartB);
+
+        assertEquals(-2, result);
+    }
 }

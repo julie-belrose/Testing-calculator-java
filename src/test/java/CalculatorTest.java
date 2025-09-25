@@ -6,13 +6,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
+    private int valueStartA = 1;
+    private int valueStartB = 3;
+
     @Test
     @DisplayName("should_return_an_addition")
     void should_return_an_addition() {
         Calculator calculator = new Calculator();
 
-        int result = calculator.add(1, 3);
+        int result = calculator.add(valueStartA, valueStartB);
 
         assertEquals(4, result);
     }
+
+
 }

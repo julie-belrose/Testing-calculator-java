@@ -1,9 +1,6 @@
 package org.example.domain.product;
 
 import org.springframework.stereotype.Service;
-import org.example.domain.product.ProductRequestDTO;
-import org.example.domain.product.ProductResponseDTO;
-import org.example.domain.product.ProductMapper;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -18,7 +15,10 @@ public class ProductService {
     }
 
     public List<ProductResponseDTO> getAllProducts() {
-        return null;
+        return productRepository.findAll()
+                .stream()
+                .map(ProductMapper::toResponseDTO)
+                .toList();
     }
 
     public Optional<Product> getProductById(UUID id) {
@@ -26,22 +26,32 @@ public class ProductService {
     }
 
     public ProductResponseDTO getProductDtoById(UUID id) {
-        return null;
+        return productRepository.findById(id)
+                .map(ProductMapper::toResponseDTO)
+                .orElse(null);
     }
 
     public ProductResponseDTO createProduct(ProductRequestDTO productDto) {
-        return null;
+        Product product = ProductMapper.toEntity(productDto);
+        Product savedProduct = productRepository.save(product);
+        return ProductMapper.toResponseDTO(savedProduct);
     }
 
     public ProductResponseDTO updateProduct(UUID id, ProductRequestDTO productDto) {
-        return null;
+        return productRepository.findById(id)
+                .map(existingProduct -> {
+                    ProductMapper.updateEntity(existingProduct, productDto);
+                    Product updatedProduct = productRepository.save(existingProduct);
+                    return ProductMapper.toResponseDTO(updatedProduct);
+                })
+                .orElse(null);
     }
 
     public boolean deleteProduct(UUID id) {
-        return false;
-    }
-
-    public boolean existsById(UUID id) {
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+            return true;
+        }
         return false;
     }
 }

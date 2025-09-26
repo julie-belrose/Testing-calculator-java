@@ -5,14 +5,13 @@ import java.util.Random;
 
 public class WordGenerator {
     private final List<String> words;
-    private final Random random;
+    private final Random random = new Random();
 
     public WordGenerator() {
         this.words = List.of("chat", "lapin", "poule");
-        this.random = new Random();
     }
 
-    public String getRandomWord(String wordToGuess) {
+    public String getRandomWord() {
         int randomIndex = random.nextInt(words.size());
         return words.get(randomIndex);
 

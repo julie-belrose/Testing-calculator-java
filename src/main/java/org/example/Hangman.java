@@ -1,39 +1,58 @@
 package org.example;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Hangman {
-    private final String wordToGuess = "";
-    private final Set<Character> guessedLetters = Set.of();
-    private int remainingAttempts = 6;
+    private final String wordToGuess;
+    private final Set<Character> guessedLetters;
+    private int remainingAttempts;
 
     public Hangman(WordGenerator wordGenerator, int maxAttempts) {
-        // ...
-        remainingAttempts = maxAttempts;
+        this.wordToGuess = wordGenerator.getRandomWord().toLowerCase();
+        this.guessedLetters = new HashSet<>();
+        this.remainingAttempts = maxAttempts;
     }
 
     public boolean guess(char letter) {
-        // ...
-        return false;
+        guessedLetters.add(letter);
+        boolean isCorrect = wordToGuess.contains(String.valueOf(letter));
+
+        if (!isCorrect) {
+            remainingAttempts--;
+        }
+
+        return isCorrect;
     }
 
     public String getMaskedWord() {
-        // ...
-        return "";
+        StringBuilder masked = new StringBuilder();
+
+        for (char c : wordToGuess.toCharArray()) {
+            if (guessedLetters.contains(c)) {
+                masked.append(c);
+            } else {
+                masked.append('_');
+            }
+        }
+
+        return masked.toString();
     }
 
     public boolean isGameWon() {
-        // ...
-        return false;
+        for (char c : wordToGuess.toCharArray()) {
+            if (!guessedLetters.contains(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isGameOver() {
-        // ...
-        return false;
+        return remainingAttempts <= 0;
     }
 
     public int getRemainingAttempts() {
-        // ...
-        return 0;
+        return remainingAttempts;
     }
 }

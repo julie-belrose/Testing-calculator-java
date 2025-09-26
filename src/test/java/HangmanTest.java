@@ -15,7 +15,7 @@ public class HangmanTest {
     @BeforeEach
     void setUp() {
         mockWordGenerator = Mockito.mock(WordGenerator.class);
-        Mockito.when(mockWordGenerator.getRandomWord("")).thenReturn("chat");
+        Mockito.when(mockWordGenerator.getRandomWord()).thenReturn("chat");
         hangman = new Hangman(mockWordGenerator, 6);
     }
 
@@ -50,5 +50,23 @@ public class HangmanTest {
         }
 
         assertTrue(hangman.isGameOver());
+    }
+
+    @Test
+    @DisplayName("should_return_masked_word")
+    void should_return_masked_word() {
+        assertEquals("____", hangman.getMaskedWord());
+
+        hangman.guess('c');
+        assertEquals("c___", hangman.getMaskedWord());
+    }
+
+    @Test
+    @DisplayName("should_track_remaining_attempts")
+    void should_track_remaining_attempts() {
+        assertEquals(6, hangman.getRemainingAttempts());
+
+        hangman.guess('x');
+        assertEquals(5, hangman.getRemainingAttempts());
     }
 }

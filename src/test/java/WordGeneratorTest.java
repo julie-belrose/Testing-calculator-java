@@ -22,7 +22,7 @@ public class WordGeneratorTest {
     @DisplayName("should_return_random_word_to_guess")
     void should_return_random_word_to_guess() {
         // Act
-        String result = wordGenerator.getRandomWord(wordToGuess);
+        String result = wordGenerator.getRandomWord();
 
         // Assert
         assertNotNull(result);

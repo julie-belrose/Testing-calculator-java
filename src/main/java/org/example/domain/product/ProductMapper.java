@@ -15,28 +15,28 @@ import org.mapstruct.ReportingPolicy;
 public class ProductMapper {
 
     public static ProductResponseDTO toResponseDTO(Product product) {
-        ProductResponseDTO dto = new ProductResponseDTO();
-        dto.setId(product.getId());
-        dto.setName(product.getName());
-        dto.setDescription(product.getDescription());
-        dto.setPrice(product.getPrice());
-        dto.setStock(product.getStock());
-        return dto;
+        return new ProductResponseDTO(
+            product.getId(),
+            product.getName(),
+            product.getDescription(),
+            product.getPrice(),
+            product.getStock()
+        );
     }
 
     public static Product toEntity(ProductRequestDTO requestDTO) {
         return new Product(
-            requestDTO.getName(),
-            requestDTO.getDescription(),
-            requestDTO.getPrice(),
-            requestDTO.getStock()
+            requestDTO.name(),
+            requestDTO.description(),
+            requestDTO.price(),
+            requestDTO.stock()
         );
     }
 
     public static void updateEntity(Product product, ProductRequestDTO requestDTO) {
-        product.setName(requestDTO.getName());
-        product.setDescription(requestDTO.getDescription());
-        product.setPrice(requestDTO.getPrice());
-        product.setStock(requestDTO.getStock());
+        product.setName(requestDTO.name());
+        product.setDescription(requestDTO.description());
+        product.setPrice(requestDTO.price());
+        product.setStock(requestDTO.stock());
     }
 }

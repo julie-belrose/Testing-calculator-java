@@ -2,6 +2,7 @@ package org.example.domain.product;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "products")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {

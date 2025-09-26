@@ -1,11 +1,12 @@
 package org.example.utils;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface GenericCrud<T> {
     T save(T entity);
-    T findById(Long id);
+    T findById(UUID id);
     List<T> findAll();
     T update(T entity);
-    boolean delete(Long id);
+    boolean delete(UUID id);
 }
